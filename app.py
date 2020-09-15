@@ -4,15 +4,16 @@ from flask_bootstrap import Bootstrap
 from flask_wtf import FlaskForm
 from wtforms import StringField, IntegerField
 from wtforms.validators import InputRequired, Email, Length
+import os
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db' #os.getenv('DATABASE_URL', None)
-app.config['SECRET_KEY'] = 'meow' #os.getenv('WTF_KEY', None)
+app.config['SECRET_KEY'] = 'blah' #os.getenv('WTF_KEY', None)
 db = SQLAlchemy(app)
 Bootstrap(app)
 
 class SignUpForm(FlaskForm):
-    name = StringField('name', validators=[InputRequired(), Length(min=2, max=20)])
+    name = StringField('name', validators=[InputRequired(), Length(min=2, max=50)])
     email = StringField('email', validators=[InputRequired(), Email(message='Valid email required.'), Length(min=5, max=50)])
     zipcode = StringField('zipcode', validators=[InputRequired(), Length(min=5, max=5)])
 
@@ -29,7 +30,7 @@ def index():
         newUser = UserInfo(name = form.name.data, email = form.email.data, zipcode = form.zipcode.data)
         db.session.add(newUser)
         db.session.commit()
-        return "<h1> Sucess! Thank you for using Alert Alligator!<h1>"
+        return "<h1> Success! Thank you for using Alert Alligator!<h1>"
     return render_template('index.html', form=form)
 
 if __name__=="__main__":
