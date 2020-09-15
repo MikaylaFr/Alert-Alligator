@@ -10,7 +10,7 @@
 <div class="container w-25 p-3">
     <div class="jumbotron jumbotron-fluid">
         <h2 class="form-register-title">Sign Up for Alert Alligator</h2>
-        <form class="form-register" method="POST" action="/"></form>  
+        <form class="form-register" method="POST" action="/">
             {{ form.hidden_tag() }}
             <div class=form-group>
                 <label for="name">Your Name</label>
@@ -24,7 +24,7 @@
                 <label for="zipcode">Zipcode</label>
                 {{ wtf.form_field(form.zipcode) }}
             </div>   
-            <button class="btn btn-primary" type="submit">Sign Up</button>
+            {{ form.submit }}
         </form>
     </div>
 </div>
