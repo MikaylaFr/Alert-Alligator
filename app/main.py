@@ -7,8 +7,8 @@ from wtforms.validators import InputRequired, Email, Length
 import os
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db' #os.getenv('DATABASE_URL', None)
-app.config['SECRET_KEY'] = 'blah' #os.getenv('WTF_KEY', None)
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL', None) #'sqlite:///test.db'
+app.config['SECRET_KEY'] = os.getenv('WTF_KEY', None)
 db = SQLAlchemy(app)
 Bootstrap(app)
 

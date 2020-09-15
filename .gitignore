@@ -131,3 +131,5 @@ dmypy.json
 
 # development db
 *.db
+.db/
+db/
