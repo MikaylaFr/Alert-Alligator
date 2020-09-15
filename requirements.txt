@@ -4,3 +4,5 @@ flask_bootstrap
 flask_sqlalchemy
 flask_wtf
 gunicorn
+psycopg2
+psycopg2-binary
